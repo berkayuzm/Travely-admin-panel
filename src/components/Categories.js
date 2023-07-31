@@ -38,6 +38,7 @@ const updateCategoryList=()=>{
           <th>Category ID</th>
           <th>Name</th>
           <th>Image URL</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
@@ -47,6 +48,7 @@ const updateCategoryList=()=>{
                     id:category.id,
                     name:category.name,
                     imageUrl:category.imageUrl,
+                    status:category.status,
                     updateCategoryList:updateCategoryList
                 }}/>
             })

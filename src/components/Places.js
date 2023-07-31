@@ -41,6 +41,9 @@ const updatePlaceList=()=>{
           <th>Image URL</th>
           <th>Coordinate X</th>
           <th>Coordinate Y</th>
+          <th>Category ID</th>
+          <th>City ID</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
@@ -53,6 +56,9 @@ const updatePlaceList=()=>{
                     imageUrl:place.imageUrl,
                     coordinateX:place.coordinateX,
                     coordinateY:place.coordinateY,
+                    categoryId:place.categoryId,
+                    cityId:place.cityId,
+                    status:place.status,
                     updatePlaceList:updatePlaceList
                 }}/>
             })

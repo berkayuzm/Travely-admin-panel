@@ -27,6 +27,7 @@ function CategoryItem(props) {
       <td>{props.obj.id}</td>
       <td>{props.obj.name}</td>
       <td>{props.obj.imageUrl}</td>
+      <td>{props.obj.status}</td>
       <td>
         <Button name="button" className="detail-form-input" variant="danger">
           Delete

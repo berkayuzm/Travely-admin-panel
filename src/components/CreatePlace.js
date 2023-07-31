@@ -11,6 +11,9 @@ function CreatePlace() {
     const [imageUrlText,setImageUrlText]=useState("");
     const [coordinateX,setCoordinateX]=useState(0);
     const [coordinateY,setCoordinateY]=useState(0);
+    const [categoryId,setCategoryId]=useState(0);
+    const [cityId,setCityId]=useState(0);
+    const [status,setStatus]=useState(0)
     const navigate=useNavigate();
 
     const handleSubmit=(event)=>{
@@ -21,6 +24,9 @@ function CreatePlace() {
             imageurl:event.target.imageUrl.value,
             coordinatex:event.target.coordinateX.value,
             coordinatey:event.target.coordinateY.value,
+            categoryid:event.target.categoryId.value,
+            cityId:event.target.cityId.value,
+            status:event.target.status.value
 
         }
         console.log(values)
@@ -71,6 +77,28 @@ function CreatePlace() {
         
         className='detail-form-input' />
       </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Category ID</Form.Label>
+        <Form.Control  name="categoryId" value={categoryId} 
+        onChange={e=>setCategoryId(e.target.value)}
+        
+        className='detail-form-input' />
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>City ID</Form.Label>
+        <Form.Control  name="cityId" value={cityId} 
+        onChange={e=>setCityId(e.target.value)}
+        
+        className='detail-form-input' />
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Status</Form.Label>
+        <Form.Control  name="status" value={status} 
+        onChange={e=>setStatus(e.target.value)}
+        
+        className='detail-form-input' />
+      </Form.Group>
+
 
       
       

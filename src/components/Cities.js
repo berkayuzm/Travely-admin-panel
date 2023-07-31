@@ -34,6 +34,7 @@ function Cities() {
               <tr>
                 <th>City ID</th>
                 <th>Name</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -44,6 +45,7 @@ function Cities() {
                     obj={{
                       id: city.id,
                       name: city.name,
+                      status:city.status,
                       updateCityList: updateCityList,
                     }}
                   />

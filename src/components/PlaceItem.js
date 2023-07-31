@@ -29,6 +29,9 @@ function PlaceItem(props) {
       <td>{props.obj.imageUrl}</td>
       <td>{props.obj.coordinateX}</td>
       <td>{props.obj.coordinateY}</td>
+      <td>{props.obj.categoryId}</td>
+      <td>{props.obj.cityId}</td>
+      <td>{props.obj.status}</td>
       <td>
         <Button name="button" className="detail-form-input" variant="danger" >
           Delete

@@ -8,12 +8,14 @@ import 'react-toastify/dist/ReactToastify.css';
 function CreateCategory() {
     const [nameText,setNameText]=useState("");
     const [imageUrlText,setImageUrlText]=useState("");
+    const [status,setStatus]=useState(0);
     const navigate=useNavigate();
     const handleSubmit=(event)=>{
         event.preventDefault();
         const values={
             name:event.target.name.value,
             imageurl:event.target.imageUrl.value,
+            status:event.target.status.value
 
         }
         console.log(values)
@@ -40,6 +42,13 @@ function CreateCategory() {
 
         <Form.Control  name="imageUrl" value={imageUrlText} 
         onChange={e=>setImageUrlText(e.target.value)}
+        className='detail-form-input' />
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Status</Form.Label>
+
+        <Form.Control  name="status" value={status} 
+        onChange={e=>setStatus(e.target.value)}
         className='detail-form-input' />
       </Form.Group>
  

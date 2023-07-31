@@ -11,6 +11,9 @@ function PlacesDetails() {
     const [imageUrlText,setImageUrlText]=useState("");
     const [coordinateX,setCoordinateX]=useState(0);
     const [coordinateY,setCoordinateY]=useState(0);
+    const [categoryId,setCategoryId]=useState(0);
+    const [cityId,setCityId]=useState(0);
+    const [status,setStatus]=useState(0)
     const navigate=useNavigate();
     let {id}=useParams();
     useEffect(()=>{
@@ -20,6 +23,9 @@ function PlacesDetails() {
     setImageUrlText(response.data.data.imageUrl)
     setCoordinateX(response.data.data.coordinateX)
     setCoordinateY(response.data.data.coordinateY)
+    setCategoryId(response.data.data.categoryId)
+    setCityId(response.data.data.cityId)
+    setStatus(response.data.data.status)
   })
     },[])
     const handleSubmit=(event)=>{
@@ -31,7 +37,9 @@ function PlacesDetails() {
             imageurl:event.target.imageUrl.value,
             coordinatex:event.target.coordinateX.value,
             coordinatey:event.target.coordinateY.value,
-
+            categoryid:event.target.categoryId.value,
+            cityId:event.target.cityId.value,
+            status:event.target.status.value
         }
         console.log(values)
         axios.put("https://localhost:44304/place",values).then(()=>{
@@ -76,6 +84,27 @@ function PlacesDetails() {
         <Form.Label>Coordinate Y</Form.Label>
         <Form.Control  name="coordinateY" value={coordinateY} 
         onChange={e=>setCoordinateY(e.target.value)}
+        
+        className='detail-form-input' />
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Category ID</Form.Label>
+        <Form.Control  name="categoryId" value={categoryId} 
+        onChange={e=>setCategoryId(e.target.value)}
+        
+        className='detail-form-input' />
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>City ID</Form.Label>
+        <Form.Control  name="cityId" value={cityId} 
+        onChange={e=>setCityId(e.target.value)}
+        
+        className='detail-form-input' />
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Status</Form.Label>
+        <Form.Control  name="status" value={status} 
+        onChange={e=>setStatus(e.target.value)}
         
         className='detail-form-input' />
       </Form.Group>

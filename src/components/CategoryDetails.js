@@ -8,12 +8,15 @@ import 'react-toastify/dist/ReactToastify.css';
 function CategoryDetails() {
     const [nameText,setNameText]=useState("");
     const [imageUrlText,setImageUrlText]=useState("");
+    const [status,setStatus]=useState(0);
+
     let {id}=useParams();
     const navigate=useNavigate();
     useEffect(()=>{
         axios.get(`https://localhost:44304/category/${id}`).then((response)=>{
     setNameText(response.data.data.name)
     setImageUrlText(response.data.data.imageUrl)
+    setStatus(response.data.data.status)
   })
     },[])
     const handleSubmit=(event)=>{
@@ -22,6 +25,7 @@ function CategoryDetails() {
             id:parseInt(id),
             name:event.target.name.value,
             imageurl:event.target.imageUrl.value,
+            status: event.target.status.value,
         }
         console.log(values)
         axios.put(`https://localhost:44304/category`,values).then(()=>{
@@ -49,7 +53,15 @@ function CategoryDetails() {
         onChange={e=>setImageUrlText(e.target.value)}
         className='detail-form-input' />
       </Form.Group>
-     
+      <Form.Group className="mb-3" >
+        <Form.Label>Status</Form.Label>
+
+        <Form.Control  name="status" value={status} 
+        onChange={e=>setStatus(e.target.value)}
+        className='detail-form-input' />
+      </Form.Group>
+ 
+
    
 
       
