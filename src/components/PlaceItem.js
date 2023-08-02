@@ -25,8 +25,12 @@ function PlaceItem(props) {
     <tr className="place-item" onClick={navigateTo}>
       <td>{props.obj.id}</td>
       <td>{props.obj.name}</td>
-      <td>{props.obj.description}</td>
-      <td>{props.obj.imageUrl}</td>
+      <td>{
+        props.obj.description.length>120? (props.obj.description.slice(0,120))+"...":props.obj.description
+      }</td>
+      <td>{
+       props.obj.imageUrl.length>20? (props.obj.imageUrl.slice(0,20))+"...":props.obj.imageUrl
+      }</td>
       <td>{props.obj.coordinateX}</td>
       <td>{props.obj.coordinateY}</td>
       <td>{props.obj.categoryId}</td>
