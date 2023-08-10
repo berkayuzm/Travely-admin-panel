@@ -14,6 +14,7 @@ import CreateCategory from "./components/CreateCategory";
 import CityDetails from "./components/CityDetails";
 import CreateCity from "./components/CreateCity";
 function App() {
+  console.log(document.cookie)
   return (
    
       <Routes>
@@ -24,14 +25,14 @@ function App() {
           </RequireAuth>
         }>
           <Route index path="places" element={<Places/>}/>
-          <Route index path="places/:id" element={<PlacesDetails/>}/>
-          <Route index path="places/create" element={<CreatePlace/>}/>
-          <Route index path="categories" element={<Categories/>}/>
-          <Route index path="categories/:id" element={<CategoryDetails/>}/>
-          <Route index path="categories/create" element={<CreateCategory/>}/>
-          <Route index path="cities" element={<Cities/>}/>
-          <Route index path="cities/create" element={<CreateCity/>}/>
-          <Route index path="cities/:id" element={<CityDetails/>}/>
+          <Route  path="places/:id" element={<PlacesDetails/>}/>
+          <Route  path="places/create" element={<CreatePlace/>}/>
+          <Route  path="categories" element={<Categories/>}/>
+          <Route  path="categories/:id" element={<CategoryDetails/>}/>
+          <Route  path="categories/create" element={<CreateCategory/>}/>
+          <Route  path="cities" element={<Cities/>}/>
+          <Route  path="cities/create" element={<CreateCity/>}/>
+          <Route  path="cities/:id" element={<CityDetails/>}/>
         </Route>
       </Routes>
   );

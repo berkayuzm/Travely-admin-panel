@@ -12,7 +12,14 @@ function PlaceItem(props) {
         navigate(`${props.obj.id}`);
     }
     else{
-        axios.delete(`https://localhost:44304/place/${props.obj.id}`).then(()=>{
+      let result = document.cookie.split("; ").reduce((prev, current) => {
+        const [name, ...value] = current.split("=");
+        prev[name] = value.join("=");
+        return prev;
+      }, {});
+      let accessToken = result._auth;
+      const headers={"Authorization": `Bearer ${accessToken}`}
+        axios.delete(`https://localhost:44304/place/${props.obj.id}`,{headers}).then(()=>{
             console.log("silme başarılı")
             props.obj.updatePlaceList();
             toast("Başarıyla silindi!")

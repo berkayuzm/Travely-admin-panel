@@ -10,8 +10,15 @@ function CategoryItem(props) {
     if (event.target.name != "button") {
       navigate(`${props.obj.id}`);
     } else {
+      let result = document.cookie.split("; ").reduce((prev, current) => {
+        const [name, ...value] = current.split("=");
+        prev[name] = value.join("=");
+        return prev;
+      }, {});
+      let accessToken = result._auth;
+      const headers={"Authorization": `Bearer ${accessToken}`}
       axios
-        .delete(`https://localhost:44304/category/${props.obj.id}`)
+        .delete(`https://localhost:44304/category/${props.obj.id}`,{headers})
         .then(() => {
           console.log("silme başarılı");
           toast("Başarıyla Silindi")
@@ -22,6 +29,7 @@ function CategoryItem(props) {
         });
     }
   };
+
   return (
     <tr className="place-item" onClick={navigateTo}>
       <td>{props.obj.id}</td>

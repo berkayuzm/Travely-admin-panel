@@ -2,20 +2,27 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function CityItem(props) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const navigateTo = (event) => {
     if (event.target.name != "button") {
       navigate(`${props.obj.id}`);
     } else {
+      let result = document.cookie.split("; ").reduce((prev, current) => {
+        const [name, ...value] = current.split("=");
+        prev[name] = value.join("=");
+        return prev;
+      }, {});
+      let accessToken = result._auth;
+      const headers={"Authorization": `Bearer ${accessToken}`}
       axios
-        .delete(`https://localhost:44304/city/${props.obj.id}`)
+        .delete(`https://localhost:44304/city/${props.obj.id}`,{headers})
         .then(() => {
           console.log("silme başarılı");
           props.obj.updateCityList();
-          toast("Başarıyla Silindi!")
+          toast("Başarıyla Silindi!");
         })
         .catch(() => {
           console.log("silme işleminde bir hata oluştu");
@@ -33,7 +40,7 @@ function CityItem(props) {
         </Button>
       </td>
     </tr>
-  )
+  );
 }
 
-export default CityItem
+export default CityItem;

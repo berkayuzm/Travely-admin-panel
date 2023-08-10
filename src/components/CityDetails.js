@@ -24,7 +24,14 @@ function CityDetails() {
             status:event.target.status.value
         }
         console.log(values)
-        axios.put(`https://localhost:44304/city`,values).then(()=>{
+        let result = document.cookie.split("; ").reduce((prev, current) => {
+          const [name, ...value] = current.split("=");
+          prev[name] = value.join("=");
+          return prev;
+        }, {});
+        let accessToken = result._auth;
+        const headers={"Authorization": `Bearer ${accessToken}`}
+        axios.put(`https://localhost:44304/city`,values,{headers}).then(()=>{
             console.log("kayıt güncellendi")
             toast("Kayıt Güncellendi!")
             navigate("/admin/cities")

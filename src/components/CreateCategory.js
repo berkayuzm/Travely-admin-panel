@@ -18,8 +18,14 @@ function CreateCategory() {
             status:event.target.status.value
 
         }
-        console.log(values)
-        axios.post("https://localhost:44304/category",values).then(()=>{
+        let result = document.cookie.split("; ").reduce((prev, current) => {
+          const [name, ...value] = current.split("=");
+          prev[name] = value.join("=");
+          return prev;
+        }, {});
+        let accessToken = result._auth;
+        const headers={"Authorization": `Bearer ${accessToken}`}
+        axios.post("https://localhost:44304/category",values,{headers}).then(()=>{
             console.log("eklendi")
             toast("Başarıyla Eklendi!")
             navigate("/admin/categories")

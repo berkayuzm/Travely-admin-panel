@@ -7,11 +7,27 @@ import Content from "../components/Content";
 import Places from "../components/Places";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 function AdminPanel() {
   const signOut = useSignOut();
   const navigate = useNavigate();
   const signOutFunc = () => {
     signOut();
+    //       let result= document.cookie.split('; ').reduce((prev, current) => {
+    //     const [name, ...value] = current.split('=');
+    //     prev[name] = value.join('=');
+    //     return prev;
+    //   }, {});
+    //  let accessToken=result._auth;
+    //   axios.interceptors.request.use(
+    //     config=>{
+    //       config.headers.Authorization=`x`;
+    //       return config;
+    //     },
+    //     error=>{
+    //       return Promise.reject(error);
+    //     }
+    //   );
     navigate("/");
   };
 

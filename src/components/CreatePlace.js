@@ -30,8 +30,15 @@ function CreatePlace() {
       status: event.target.status.value,
     };
     console.log(values);
+    let result = document.cookie.split("; ").reduce((prev, current) => {
+      const [name, ...value] = current.split("=");
+      prev[name] = value.join("=");
+      return prev;
+    }, {});
+    let accessToken = result._auth;
+    const headers={"Authorization": `Bearer ${accessToken}`}
     axios
-      .post("https://localhost:44304/place", values)
+      .post("https://localhost:44304/place", values,{headers})
       .then(() => {
         console.log("eklendi");
         toast("Başarıyla Eklendi!");

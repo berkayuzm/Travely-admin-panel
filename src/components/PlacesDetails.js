@@ -42,8 +42,15 @@ function PlacesDetails() {
       status: event.target.status.value,
     };
     console.log(values);
+    let result = document.cookie.split("; ").reduce((prev, current) => {
+      const [name, ...value] = current.split("=");
+      prev[name] = value.join("=");
+      return prev;
+    }, {});
+    let accessToken = result._auth;
+    const headers={"Authorization": `Bearer ${accessToken}`}
     axios
-      .put("https://localhost:44304/place", values)
+      .put("https://localhost:44304/place", values,{headers})
       .then(() => {
         console.log("kayıt güncellendi");
         toast("Kayıt Güncellendi!");

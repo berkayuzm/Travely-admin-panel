@@ -30,6 +30,21 @@ const handleSubmit=(event)=>{
         authState:{name:values.username}
     })
     navigate("/admin/places")
+    //       let result= document.cookie.split('; ').reduce((prev, current) => {
+    //     const [name, ...value] = current.split('=');
+    //     prev[name] = value.join('=');
+    //     return prev;
+    //   }, {});
+    //  let accessToken=result._auth;
+    //   axios.interceptors.request.use(
+    //     config=>{
+    //       config.headers.Authorization=`Bearer ${accessToken}`;
+    //       return config;
+    //     },
+    //     error=>{
+    //       return Promise.reject(error);
+    //     }
+    //   );
     toast("Giriş Başarılı!")
    }).catch((e)=>{
     console.log(e)
